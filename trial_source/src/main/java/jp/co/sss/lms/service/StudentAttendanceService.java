@@ -1,6 +1,7 @@
 package jp.co.sss.lms.service;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import jp.co.sss.lms.entity.TStudentAttendance;
 import jp.co.sss.lms.enums.AttendanceStatusEnum;
 import jp.co.sss.lms.form.AttendanceForm;
 import jp.co.sss.lms.form.DailyAttendanceForm;
+import jp.co.sss.lms.mapper.MLmsUserMapper;
 import jp.co.sss.lms.mapper.TStudentAttendanceMapper;
 import jp.co.sss.lms.util.AttendanceUtil;
 import jp.co.sss.lms.util.Constants;
@@ -32,6 +34,8 @@ import jp.co.sss.lms.util.TrainingTime;
 public class StudentAttendanceService {
 
 	@Autowired
+	private TrainingTime trainingTime;
+	@Autowired
 	private DateUtil dateUtil;
 	@Autowired
 	private AttendanceUtil attendanceUtil;
@@ -42,7 +46,21 @@ public class StudentAttendanceService {
 	@Autowired
 	private LoginUserDto loginUserDto;
 	@Autowired
+	private MLmsUserMapper mLmsUserMapper;
+	/*@Autowired
+	private MPlaceMapper mPlaceMapper;
+	@Autowired
+	private TCompanyAttendanceMapper tCompanyAttendanceMapper;
+	@Autowired
+	private TUserPlaceMapper tUserPlaceMapper;*/
+	@Autowired
 	private TStudentAttendanceMapper tStudentAttendanceMapper;
+	/* @Autowired
+	private PlaceService placeService;
+	@Autowired
+	private CourseService courseService;
+	@Autowired
+	private CompanyService companyService;*/
 
 	/**
 	 * 勤怠一覧情報取得
@@ -333,5 +351,23 @@ public class StudentAttendanceService {
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
+
+	public Boolean notEnterCheck() throws ParseException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		Date today = sdf.parse(sdf.format(new Date()));
+
+		Integer notEnterCount = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(),
+				Constants.DB_FLG_FALSE, today);
+
+		if (notEnterCount > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	/*public void formatConversion(AttendanceForm attendanceForm) {
+	
+	}*/
 
 }

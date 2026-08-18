@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title,body)">
+
 <head>
-<meta charset="UTF-8" />
-<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/css/bootstrap-datepicker.min.css}" rel="stylesheet" />
-<link th:href="@{/css/lms.css}" rel="stylesheet" />
-<link th:href="@{/css/jstree.css}" rel="stylesheet" />
-<link th:href="@{/img/favicon.ico}" rel="shortcut icon" />
+	<meta charset="UTF-8" />
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/bootstrap-datepicker.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/lms.css}" rel="stylesheet" />
+	<link th:href="@{/css/jstree.css}" rel="stylesheet" />
+	<link th:href="@{/img/favicon.ico}" rel="shortcut icon" />
 
-<script th:src="@{/js/jquery.2.1.1.min.js}"></script>
-<script th:src="@{/js/jquery.dataTables.min.js}"></script>
-<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
-<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
-<script th:src="@{/js/bootstrap-datepicker.ja.min.js}"></script>
-<script th:src="@{/js/lms_common.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/jstree.min.js}"></script>
-<script th:src="@{/js/currency.js}"></script>
+	<script th:src="@{/js/jquery.2.1.1.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.ja.min.js}"></script>
+	<script th:src="@{/js/lms_common.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jstree.min.js}"></script>
+	<script th:src="@{/js/currency.js}"></script>
 
-<title th:replace="${title}"></title>
+	<title th:replace="${title}"></title>
 </head>
+
 <body>
 	<div id="wrap">
 
@@ -50,4 +52,5 @@
 	<div th:replace="~{/common/footer :: layout-footer}"></div>
 
 </body>
+
 </html>
