@@ -12,7 +12,7 @@ import jp.co.sss.lms.entity.TStudentAttendance;
 /**
  * 勤怠情報（受講生入力）テーブルマッパー
  * 
- * @author 東京ITスクール
+ * @author 冨澤雄志 - Task.25
  */
 @Mapper
 public interface TStudentAttendanceMapper {
@@ -65,6 +65,15 @@ public interface TStudentAttendanceMapper {
 	 */
 	Boolean update(TStudentAttendance tStudentAttendance);
 
+	/**
+	 * 打刻漏れの数を数える
+	 * 
+	 * @author 冨澤雄志 - Task.25
+	 * @param lmsUserId
+	 * @param deleteFlg
+	 * @param today
+	 * @return 入力されていない過去の出退勤時間の数
+	 */
 	Integer notEnterCount(@Param("lmsUserId") Integer lmsUserId, @Param("deleteFlg") Short deleteFlg,
 			@Param("today") Date today);
 

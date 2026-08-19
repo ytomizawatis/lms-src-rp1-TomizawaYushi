@@ -19,7 +19,7 @@ import jp.co.sss.lms.util.Constants;
 /**
  * 勤怠管理コントローラ
  * 
- * @author 東京ITスクール
+ * @author 冨澤雄志 - Task.25
  */
 @Controller
 @RequestMapping("/attendance")
@@ -49,7 +49,7 @@ public class AttendanceController {
 
 		Boolean notEnterCheck = studentAttendanceService.notEnterCheck();
 
-		System.out.println("notEnterCheck = " + notEnterCheck);
+		//System.out.println("notEnterCheck = " + notEnterCheck);
 
 		model.addAttribute("notEnterCheck", notEnterCheck);
 

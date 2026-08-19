@@ -48,35 +48,20 @@
 	<insert id="insert"
 		parameterType="jp.co.sss.lms.entity.TStudentAttendance"
 		useGeneratedKeys="true" keyProperty="studentAttendanceId">
-		INSERT INTO t_student_attendance
-		(
-		lms_user_id,
-		training_date,
-		training_start_time,
-		training_end_time,
-		status,
-		note,
-		account_id,
-		delete_flg,
-		first_create_user,
-		first_create_date,
-		last_modified_user,
-		last_modified_date,
-		blank_time
-		) VALUES (
-		#{lmsUserId},
-		#{trainingDate},
-		#{trainingStartTime},
-		#{trainingEndTime},
-		#{status},
-		#{note},
-		#{accountId},
-		#{deleteFlg},
-		#{firstCreateUser},
-		#{firstCreateDate},
-		#{lastModifiedUser},
-		#{lastModifiedDate},
-		#{blankTime}
+		INSERT INTO t_student_attendance (
+		lms_user_id, training_date, training_start_time,
+		training_end_time, status, note,
+		account_id, delete_flg, first_create_user,
+		first_create_date, last_modified_user,
+		last_modified_date, blank_time
+		)
+		VALUES (
+		#{lmsUserId}, #{trainingDate},
+		#{trainingStartTime}, #{trainingEndTime},
+		#{status}, #{note}, #{accountId},
+		#{deleteFlg}, #{firstCreateUser},
+		#{firstCreateDate}, #{lastModifiedUser},
+		#{lastModifiedDate}, #{blankTime}
 		)
 	</insert>
 
@@ -86,8 +71,7 @@
 		SET
 		training_start_time = #{trainingStartTime},
 		training_end_time = #{trainingEndTime},
-		status = #{status},
-		note = #{note},
+		status = #{status}, note = #{note},
 		last_modified_user = #{lastModifiedUser},
 		last_modified_date = #{lastModifiedDate},
 		blank_time = #{blankTime}

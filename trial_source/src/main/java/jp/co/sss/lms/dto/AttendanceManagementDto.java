@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 /**
  * 勤怠管理画面用DTO
  * 
- * @author 東京ITスクール
+ * @author 冨澤雄志 - Task.25
  */
 @Component
 @Data

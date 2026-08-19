@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * 勤怠管理(受講生)テーブルエンティティ
  * 
- * @author 東京ITスクール
+ * @author 冨澤雄志 - Task.25
  */
 @Data
 public class TStudentAttendance {

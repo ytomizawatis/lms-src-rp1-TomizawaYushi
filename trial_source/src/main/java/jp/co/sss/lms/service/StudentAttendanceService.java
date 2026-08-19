@@ -16,7 +16,6 @@ import jp.co.sss.lms.entity.TStudentAttendance;
 import jp.co.sss.lms.enums.AttendanceStatusEnum;
 import jp.co.sss.lms.form.AttendanceForm;
 import jp.co.sss.lms.form.DailyAttendanceForm;
-import jp.co.sss.lms.mapper.MLmsUserMapper;
 import jp.co.sss.lms.mapper.TStudentAttendanceMapper;
 import jp.co.sss.lms.util.AttendanceUtil;
 import jp.co.sss.lms.util.Constants;
@@ -28,13 +27,13 @@ import jp.co.sss.lms.util.TrainingTime;
 /**
  * 勤怠情報（受講生入力）サービス
  * 
- * @author 東京ITスクール
+ * @author 冨澤雄志 - Task.25
  */
 @Service
 public class StudentAttendanceService {
 
-	@Autowired
-	private TrainingTime trainingTime;
+	/* @Autowired
+	private TrainingTime trainingTime; */
 	@Autowired
 	private DateUtil dateUtil;
 	@Autowired
@@ -45,9 +44,9 @@ public class StudentAttendanceService {
 	private LoginUserUtil loginUserUtil;
 	@Autowired
 	private LoginUserDto loginUserDto;
-	@Autowired
-	private MLmsUserMapper mLmsUserMapper;
 	/*@Autowired
+	private MLmsUserMapper mLmsUserMapper;
+	@Autowired
 	private MPlaceMapper mPlaceMapper;
 	@Autowired
 	private TCompanyAttendanceMapper tCompanyAttendanceMapper;
@@ -352,6 +351,13 @@ public class StudentAttendanceService {
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
 
+	/**
+	 * 打刻漏れの回数の値が0より大きいか否か
+	 * 
+	 * @author 冨澤雄志 - Task.25
+	 * @return 打刻漏れの回数の値が0より大きいか否か
+	 * @throws ParseException
+	 */
 	public Boolean notEnterCheck() throws ParseException {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -365,9 +371,5 @@ public class StudentAttendanceService {
 		}
 		return false;
 	}
-
-	/*public void formatConversion(AttendanceForm attendanceForm) {
-	
-	}*/
 
 }
