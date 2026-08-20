@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -224,6 +226,7 @@ public class StudentAttendanceService {
 	/**
 	 * 勤怠フォームへ設定
 	 * 
+	 * @author 冨澤雄志 - Task.26
 	 * @param attendanceManagementDtoList
 	 * @return 勤怠編集フォーム
 	 */
@@ -236,6 +239,23 @@ public class StudentAttendanceService {
 		attendanceForm.setUserName(loginUserDto.getUserName());
 		attendanceForm.setLeaveFlg(loginUserDto.getLeaveFlg());
 		attendanceForm.setBlankTimes(attendanceUtil.setBlankTime());
+
+		Map<Integer, String> hourMap = new LinkedHashMap<>();
+		hourMap.put(null, "");
+
+		for (int i = 0; i < 24; i++) {
+			hourMap.put(i, String.format("%02d", i));
+		}
+
+		Map<Integer, String> minuteMap = new LinkedHashMap();
+		minuteMap.put(null, "");
+
+		for (int i = 0; i < 60; i++) {
+			minuteMap.put(i, String.format("%02d", i));
+		}
+
+		attendanceForm.setHours(hourMap);
+		attendanceForm.setMinutes(minuteMap);
 
 		// 途中退校している場合のみ設定
 		if (loginUserDto.getLeaveDate() != null) {
@@ -370,6 +390,27 @@ public class StudentAttendanceService {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 入力された出退勤時刻の形式を変換
+	 * 
+	 * @author 冨澤雄志 - Task.26
+	 * @return なんか
+	 * @param attendanceForm
+	 */
+	public void formatConversion(AttendanceForm attendanceForm) {
+		/*
+		 *Task.26 入力された出退勤の{時間}{分}をhh:mm形式に変換し、AttendanceFormにセットする
+		
+		# 概要 フォーム内の「時」と「分」の入力を、「hh:mm」形式の文字列に変換してセットする。
+		
+		# 処理 
+		[loop] DailyAttendanceForm : フォーム内のリスト 
+		* [if 出勤の「時」「分」が共に入力されている場合] %02d:%02d 形式で trainingStartTime にセットする。 
+		* [if 退勤の「時」「分」が共に入力されている場合] %02d:%02d 形式で trainingEndTime にセットする。
+		[loop end]
+		 */
 	}
 
 }
