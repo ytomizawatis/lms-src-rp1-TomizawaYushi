@@ -33,11 +33,20 @@ public class AttendanceForm {
 	/** 日次の勤怠フォームリスト */
 	private List<DailyAttendanceForm> attendanceList;
 
+	/** Task.26 出退勤時刻の「時」プルダウン */
+	private Map<Integer, String> hours;
+	/** Task.26 出退勤時刻の「分」プルダウン */
+	private Map<Integer, String> minutes;
+
+	/** Task.26 出退勤時刻の「時」プルダウンを設定 */
 	public void setHours(Map<Integer, String> hourMap) {
 		// TODO 自動生成されたメソッド・スタブ
+		this.hours = hourMap;
 	}
 
+	/** Task.26 出退勤時刻の「分」プルダウンを設定 */
 	public void setMinutes(Map<Integer, String> minuteMap) {
 		// TODO 自動生成されたメソッド・スタブ
+		this.minutes = minuteMap;
 	}
 }
