@@ -432,10 +432,9 @@ public class StudentAttendanceService {
 
 			// 出勤の「時」「分」が共に入力されている場合
 			if (dailyAttendanceForm.getTrainingStartTimeHour() != null
-					// && !dailyAttendanceForm.getTrainingStartTimeHour().isEmpty()
+					&& !dailyAttendanceForm.getTrainingStartTimeHour().isEmpty()
 					&& dailyAttendanceForm.getTrainingStartTimeMinute() != null
-			// && !dailyAttendanceForm.getTrainingStartTimeMinute().isEmpty()
-			) {
+					&& !dailyAttendanceForm.getTrainingStartTimeMinute().isEmpty()) {
 
 				String trainingStartTime = String.format("%02d:%02d",
 						Integer.parseInt(dailyAttendanceForm.getTrainingStartTimeHour()),
@@ -446,10 +445,9 @@ public class StudentAttendanceService {
 
 			// 退勤の「時」「分」が共に入力されている場合
 			if (dailyAttendanceForm.getTrainingEndTimeHour() != null
-					// && !dailyAttendanceForm.getTrainingEndTimeHour().isEmpty()
+					&& !dailyAttendanceForm.getTrainingEndTimeHour().isEmpty()
 					&& dailyAttendanceForm.getTrainingEndTimeMinute() != null
-			// && !dailyAttendanceForm.getTrainingStartTimeMinute().isEmpty()
-			) {
+					&& !dailyAttendanceForm.getTrainingStartTimeMinute().isEmpty()) {
 
 				String trainingEndTime = String.format("%02d:%02d",
 						Integer.parseInt(dailyAttendanceForm.getTrainingEndTimeHour()),
