@@ -27,9 +27,10 @@
 					<thead>
 						<tr>
 							<th class="w140">日付</th>
-							<th class="w300">コース内容</th>
-							<th class="w70">出勤</th>
-							<th class="w70">退勤</th>
+							<th class="w140">コース内容</th>
+							<th class="w60"></th>
+							<th class="w180" colspan="3">出勤</th>
+							<th class="w180" colspan="3">退勤</th>
 							<th class="w80">中抜け時間</th>
 							<th class="w70">ステータス</th>
 							<th class="w240">備考</th>
@@ -53,7 +54,10 @@
 										th:value="${dailyAttendanceForm.statusDispName}" />
 								</th:block>
 								<td class="w140">[[${dailyAttendanceForm.dispTrainingDate}]]</td>
-								<td class="w300">[[${dailyAttendanceForm.sectionName}]]</td>
+								<td class="w140">[[${dailyAttendanceForm.sectionName}]]</td>
+								<td class="w60">
+									<input type="button" class="btn btn-success" value="定時">
+								</td>
 								<td class="w70">
 									<!-- Task.26: 出勤時刻の「時」を選択する -->
 									<select th:name="|attendanceList[${stat.index}].trainingStartTimeHour|"
@@ -63,7 +67,9 @@
 											th:selected="${hour.value == dailyAttendanceForm.trainingStartTimeHour}">
 										</option>
 									</select>
-
+								</td>
+								<td>:</td>
+								<td class="w70">
 									<!-- Task.26: 出勤時刻の「分」を選択する -->
 									<select th:name="|attendanceList[${stat.index}].trainingStartTimeMinute|"
 										class="form-control">
@@ -82,7 +88,9 @@
 											th:selected="${hour.value == dailyAttendanceForm.trainingEndTimeHour}">
 										</option>
 									</select>
-
+								</td>
+								<td>:</td>
+								<td class="w70">
 									<!-- Task.26: 退勤時刻の「分」を選択する -->
 									<select th:name="|attendanceList[${stat.index}].trainingEndTimeMinute|"
 										class="form-control">
