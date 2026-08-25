@@ -458,4 +458,43 @@ public class StudentAttendanceService {
 		}
 	}
 
+	/**
+	 * 勤怠入力チェック
+	 * 
+	 * @author 冨澤雄志 - Task.27
+	 * @return なんか
+	 * @param attendanceForm
+	 * @param result
+	 */
+
+	/*
+	public void updateInputCheck(AttendanceForm attendanceForm, BindingResult result) {
+		Task.27 勤怠入力チェック
+		
+		# 概要 勤怠更新時の入力チェックを行う（文字数、時刻の整合性、中抜け時間の妥当性）。
+		
+		# 処理
+		[loop] DailyAttendanceForm ごとにチェックを実施。 
+		    * 備考の文字数チェック（100文字以内）。 
+		    * 時刻の「時」だけ、「分」だけといった片側未入力チェック。 
+		    * 「出勤なし、退勤あり」の矛盾チェック。  
+		    * [if エラーがなければ] 出勤時刻 ＞ 退勤時刻 になっていないか比較チェック。
+		    * [if 中抜け時間が入力されている場合] 出退勤の差分から計算される最大受講時間よりも中抜け時間が長くないかチェック。
+		[loop end]
+	
+		for (DailyAttendanceForm dailyAttendanceForm : なんか) {
+			* 備考の文字数チェック（100文字以内）。 
+		    * 時刻の「時」だけ、「分」だけといった片側未入力チェック。
+			
+			if (!result.hasErrors()) {
+				// 出勤時刻 ＞ 退勤時刻 になっていないか比較チェック。
+				
+			}
+			if (nakanukejikan != null) {
+				// 出退勤の差分から計算される最大受講時間よりも中抜け時間が長くないかチェック。
+				
+			}
+		}
+	} */
+
 }
