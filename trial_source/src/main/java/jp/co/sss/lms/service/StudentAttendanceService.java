@@ -468,7 +468,7 @@ public class StudentAttendanceService {
 	 * 勤怠入力チェック
 	 * 
 	 * @author 冨澤雄志 - Task.27
-	 * @return なんか
+	 * @return 
 	 * @param attendanceForm
 	 * @param result
 	 */

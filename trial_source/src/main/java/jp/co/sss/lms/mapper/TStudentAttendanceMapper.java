@@ -71,10 +71,10 @@ public interface TStudentAttendanceMapper {
 	 * @author 冨澤雄志 - Task.25
 	 * @param lmsUserId
 	 * @param deleteFlg
-	 * @param today
+	 * @param trainingDate
 	 * @return 入力されていない過去の出退勤時間の数
 	 */
 	Integer notEnterCount(@Param("lmsUserId") Integer lmsUserId, @Param("deleteFlg") Short deleteFlg,
-			@Param("today") Date today);
+			@Param("trainingDate") Date trainingDate);
 
 }
