@@ -11,6 +11,7 @@ import java.util.Map;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import jp.co.sss.lms.dto.AttendanceManagementDto;
 import jp.co.sss.lms.dto.LoginUserDto;
@@ -389,7 +390,7 @@ public class StudentAttendanceService {
 	}
 
 	/**
-	 * 打刻漏れの回数の値が0より大きいか否か
+	 * # 概要 今日より前の過去日に、未入力の勤怠があるかどうかを判定する。
 	 * 
 	 * @author 冨澤雄志 - Task.25
 	 * @return 打刻漏れの回数の値が0より大きいか否か
@@ -397,12 +398,17 @@ public class StudentAttendanceService {
 	 */
 	public Boolean notEnterCheck() throws ParseException {
 
+		// # 処理 
+		// * 今日の日付を取得する。
+		// new Date()で現在の日時を取得、"yyyy/MM/dd"の形式に成形
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		Date today = sdf.parse(sdf.format(new Date()));
 
+		// *tStudentAttendanceMapper.notEnterCount を呼び出し、未入力件数を取得する。
 		Integer notEnterCount = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(),
 				Constants.DB_FLG_FALSE, today);
 
+		// *件数が 0 より大きければ true、そうでなければ false を戻す。
 		if (notEnterCount > 0) {
 			return true;
 		}
@@ -447,7 +453,7 @@ public class StudentAttendanceService {
 			if (dailyAttendanceForm.getTrainingEndTimeHour() != null
 					&& !dailyAttendanceForm.getTrainingEndTimeHour().isEmpty()
 					&& dailyAttendanceForm.getTrainingEndTimeMinute() != null
-					&& !dailyAttendanceForm.getTrainingStartTimeMinute().isEmpty()) {
+					&& !dailyAttendanceForm.getTrainingEndTimeMinute().isEmpty()) {
 
 				String trainingEndTime = String.format("%02d:%02d",
 						Integer.parseInt(dailyAttendanceForm.getTrainingEndTimeHour()),
@@ -467,9 +473,8 @@ public class StudentAttendanceService {
 	 * @param result
 	 */
 
-	/*
 	public void updateInputCheck(AttendanceForm attendanceForm, BindingResult result) {
-		Task.27 勤怠入力チェック
+		/* Task.27 勤怠入力チェック
 		
 		# 概要 勤怠更新時の入力チェックを行う（文字数、時刻の整合性、中抜け時間の妥当性）。
 		
@@ -480,21 +485,27 @@ public class StudentAttendanceService {
 		    * 「出勤なし、退勤あり」の矛盾チェック。  
 		    * [if エラーがなければ] 出勤時刻 ＞ 退勤時刻 になっていないか比較チェック。
 		    * [if 中抜け時間が入力されている場合] 出退勤の差分から計算される最大受講時間よりも中抜け時間が長くないかチェック。
-		[loop end]
-	
-		for (DailyAttendanceForm dailyAttendanceForm : なんか) {
-			* 備考の文字数チェック（100文字以内）。 
-		    * 時刻の「時」だけ、「分」だけといった片側未入力チェック。
-			
+		[loop end] */
+
+		/* 
+		for (DailyAttendanceForm dailyAttendanceForm : attendanceForm.getAttendanceList()) {
+			// * 備考の文字数チェック（100文字以内）。 
+			if (dailyAttendanceForm.getNote() != null && dailyAttendanceForm.getNote().length() > 100) {
+				// maxlength のエラーを追加
+				// パラメータ：備考、100
+				エラーメッセージを追加する("maxlength", "備考", "100");
+			}
+			// * 時刻の「時」だけ、「分」だけといった片側未入力チェック。
+		
 			if (!result.hasErrors()) {
 				// 出勤時刻 ＞ 退勤時刻 になっていないか比較チェック。
-				
+		
 			}
-			if (nakanukejikan != null) {
+			if (dailyAttendanceForm.getBlankTime() != null) {
 				// 出退勤の差分から計算される最大受講時間よりも中抜け時間が長くないかチェック。
-				
+		
 			}
-		}
-	} */
+		} */
+	}
 
 }
